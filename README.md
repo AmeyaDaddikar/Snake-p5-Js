@@ -11,12 +11,8 @@ I took on this project to learn to make light browser games and canvases and to 
 #### 1. foodBlock
 #### 2. playerBlocks (array of player blocks)
 
-### The collision detection is quite simple, and is done in two different ways
-#### 1. foodBlock to playerBlock head collision :
-The collision is said to be true if the absolute difference of the x coordinates and y coordinates of the head of the player block and the foodblock are of a certain magnitude.
-
-#### 2. playerBlock to playerBlock collision (to detect overlapping):
-Here, simply it is checked whether the x and y coordinates of the headBlock and the rest of the playerBlocks is same or not. This method of collision detection somethimes does not work for bigger snakes, but the prior collision detection method would not work for the playerBlock-playerBlock collision.
+### The collision detection is quite simple, and takes place in the following way
+the absoulte distance between the x and y coordinates of the headBlock and the rest of the playerBlocks (and foodBlock) is less than some previously set value. 
 
 ### Following are some of the features to be added to the project :
 1. Add a UI and link it with the game, wherein attributes like the color, game speed, etc. can be tweaked with a switch of a button or a slider.

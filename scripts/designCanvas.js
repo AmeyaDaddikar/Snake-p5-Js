@@ -102,21 +102,20 @@ function draw(){
 	foodBlock.render();
 
 	updatePlayerBlocks();
-
 	displayaScore();
+
+	let headBlock = playerBlocks[playerBlocks.length - 1];
 
 	// Checks if the headBlock has intersected with any of the other blocks
 	// of the player
-	for(let i = 0, headBlock = playerBlocks[playerBlocks.length - 1]; 
-		i < playerBlocks.length - initialPlayerLength; 
-		i++)
+	for(let i = 0; i < playerBlocks.length - initialPlayerLength; i++)
 		if(checkCollision(playerBlocks[i], headBlock)){
 			resetPlayerSnake();
 			return;
 		}
 
 	//Checks if the headBlock is in the vicinity of any foodBlock
-	if(isEaten()){
+	if(checkCollision(headBlock, foodBlock)){
 			randomizeFoodBlock();
 			increasePlayerLength();
 			foodEatenSound.play();
@@ -158,9 +157,10 @@ function resetPlayerSnake(){
 
 function checkCollision(block1, block2){
 	return (
-			block1.pos['x'] == block2.pos['x']
-		&& 	block1.pos['y'] == block2.pos['y']
-		);
+			Math.abs(block1.pos['x'] - block2.pos['x']) < 30
+		&& 	Math.abs(block1.pos['y'] - block2.pos['y']) < 30
+	);
+
 }
 
 function randomizeFoodBlock(){
@@ -169,15 +169,6 @@ function randomizeFoodBlock(){
 						Math.floor(Math.random() * CANVAS_HEIGHT * 0.8),
 						FOOD_COLORS
 					);
-}
-
-function isEaten(){
-	let frontBlock = playerBlocks[playerBlocks.length - 1];
-
-	return (
-			Math.abs(frontBlock.pos['x'] - foodBlock.pos['x']) < 30
-		&& 	Math.abs(frontBlock.pos['y'] - foodBlock.pos['y']) < 30
-		);
 }
 
 function displayaScore(){
