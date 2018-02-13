@@ -105,20 +105,23 @@ function draw(){
 
 	displayaScore();
 
-	for(let i = 0; i < playerBlocks.length; i++){
-		for(let j = 0; j < playerBlocks.length; j++)
-			if(i != j)
-				if(checkCollision(playerBlocks[i], playerBlocks[j])){
-					resetPlayerSnake();
-					return;
-			}
-		if(isEaten()){
+	// Checks if the headBlock has intersected with any of the other blocks
+	// of the player
+	for(let i = 0, headBlock = playerBlocks[playerBlocks.length - 1]; 
+		i < playerBlocks.length - initialPlayerLength; 
+		i++)
+		if(checkCollision(playerBlocks[i], headBlock)){
+			resetPlayerSnake();
+			return;
+		}
+
+	//Checks if the headBlock is in the vicinity of any foodBlock
+	if(isEaten()){
 			randomizeFoodBlock();
 			increasePlayerLength();
 			foodEatenSound.play();
 			return;
 		}
-	}
 }
 
 function increasePlayerLength(){
