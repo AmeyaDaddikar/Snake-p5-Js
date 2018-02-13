@@ -5,7 +5,7 @@ Snake is a recreation of the vintage snake game, developed to work on cross brow
 
 I took on this project to learn to make light browser games and canvases and to get acquainted with the p5 JS library. This game is further meant to be assigned to the freshers as a begineer's project, so they can build a project (using other languages and libraries like PyGame) on their own having this game as a reference.
 
-![screenshot of the game](snake_screnshot.png)
+![screenshot of the game](snake_screenshot.png)
 
 ### The game has a very minimilistic object rendering with two categories of objects made from the same class
 #### 1. foodBlock
